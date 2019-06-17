@@ -1,0 +1,31 @@
+﻿@using ThaiMovie.Models;
+
+@model IEnumerable<Customer>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table-bordered table-hover">
+    <thead>
+        <tr>
+            <th class="col-sm-3">Customer</th>
+            <th class="col-sm-3">DurationInMonths</th>
+            <th class="col-sm-3">MembershipType</th>
+            <th class="col-sm-3">DiscountRate</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@Html.ActionLink(item.Name, "Details", "Customers", new { @id = item.Id }, null)</td>
+            <td>@item.MembershipType.DurationInMonths</td>
+            <td>@item.MembershipType.Name.ToString()</td>
+            <td>@item.MembershipType.DiscountRate%</td>
+
+        </tr>
+        }
+    </tbody>
+</table>
+
